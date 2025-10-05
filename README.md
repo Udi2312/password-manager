@@ -107,18 +107,6 @@ Click Deploy
 ├── lib/                  # Utilities (DB, crypto, JWT helpers)
 └── README.md
 
-# Roadmap
-
- Implement 2FA (TOTP)
-
- Add tags & folder organization
-
- Enable encrypted export/import
-
- Integrate browser autofill (beta)
-
- Add password strength analyzer
-
 # License
 
 MIT License – Free to use and modify.
