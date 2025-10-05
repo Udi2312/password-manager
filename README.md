@@ -1,8 +1,8 @@
-🛡️ Password Manager MVP
+ # Password Manager MVP
 
 A secure, privacy-first full-stack password manager built with Next.js, MongoDB, and client-side encryption, ensuring that only you can decrypt your data.
 
-🚀 Features
+# Features
 
 Secure Authentication – Email/password signup and login using bcrypt hashing
 
@@ -24,7 +24,7 @@ Auto-Clear Clipboard – Passwords copied to clipboard automatically clear after
 
 Export/Import (Encrypted) – Securely back up or restore vault data via encrypted local files (planned feature)
 
-🧩 Tech Stack
+# Tech Stack
 Layer	Technology
 Frontend	Next.js 14 (App Router), React, Tailwind CSS
 Backend	Next.js API Routes
@@ -61,7 +61,7 @@ npm run dev
 
 Visit → http://localhost:3000
 
-🧠 MongoDB Setup
+# MongoDB Setup
 
 Create a free cluster at MongoDB Atlas
 
@@ -71,20 +71,22 @@ Paste it into your .env.local file
 
 The app auto-creates collections on first run
 
-🔒 Security Architecture
+# Security Architecture
 Layer	Security Measure
 Client-Side Encryption	AES-GCM with PBKDF2 key derivation (100,000 iterations)
 Password Hashing	bcrypt (10 rounds)
 Authentication	JWT in httpOnly cookies
 Clipboard Handling	Clears sensitive data automatically
 Zero-Knowledge Design	Server never sees unencrypted vault data
-🗂️ Environment Variables
+
+# Environment Variables
 Variable	Description
 MONGODB_URI	MongoDB connection string
 JWT_SECRET	Secret key for signing JWT tokens
 NEXTAUTH_SECRET	Optional – used if integrating with NextAuth
 ENCRYPTION_SALT	Optional – additional salt for key derivation
-☁️ Deployment (Vercel)
+
+# Deployment (Vercel)
 
 Push your repo to GitHub
 
@@ -94,7 +96,7 @@ Add your .env variables in the Vercel dashboard
 
 Click Deploy
 
-📁 Project Structure
+# Project Structure
 ├── app/
 │   ├── api/              # API routes (auth, vault, etc.)
 │   ├── login/            # Login page
@@ -105,7 +107,7 @@ Click Deploy
 ├── lib/                  # Utilities (DB, crypto, JWT helpers)
 └── README.md
 
-🧭 Roadmap
+# Roadmap
 
  Implement 2FA (TOTP)
 
@@ -117,7 +119,7 @@ Click Deploy
 
  Add password strength analyzer
 
-🪪 License
+# License
 
 MIT License – Free to use and modify.
 Built with ❤️ for privacy-focused developers.
