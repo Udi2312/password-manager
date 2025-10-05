@@ -1,97 +1,123 @@
-# Password Manager MVP
+🛡️ Password Manager MVP
 
-A secure, full-stack password manager built with Next.js, MongoDB, and client-side encryption.
+A secure, privacy-first full-stack password manager built with Next.js, MongoDB, and client-side encryption, ensuring that only you can decrypt your data.
 
-## Features
+🚀 Features
 
-- **Secure Authentication**: Email/password signup and login with bcrypt hashing
-- **Client-Side Encryption**: All vault data encrypted using Web Crypto API before sending to server
-- **Password Generator**: Customizable password generation with various options
-- **Vault Management**: Store, view, edit, and delete password entries
-- **Search & Filter**: Quickly find vault items by title or username
-- **Dark Theme**: Minimal, fast, and responsive dark UI
-- **Auto-Clear Clipboard**: Copied passwords automatically clear after 15 seconds
+Secure Authentication – Email/password signup and login using bcrypt hashing
 
-## Tech Stack
+Client-Side Encryption – Vault data encrypted in the browser with the Web Crypto API before transmission
 
-- **Frontend**: Next.js 14 (App Router), React, Tailwind CSS
-- **Backend**: Next.js API Routes
-- **Database**: MongoDB
-- **Authentication**: JWT with httpOnly cookies
-- **Encryption**: Web Crypto API (AES-GCM with PBKDF2 key derivation)
-- **Password Hashing**: bcrypt
+Password Generator – Generate strong passwords with customizable options
 
-## Getting Started
+Vault Management – Add, view, edit, and delete password entries
 
-### Prerequisites
+Search & Filter – Quickly find credentials by title, username, or tags
 
-- Node.js 18+ installed
-- MongoDB Atlas account (free tier works)
+Tags & Folders – Organize passwords using labels and nested folders (coming soon)
 
-### Installation
+Dark Mode – Elegant, distraction-free UI with persistent theme preference
 
-1. Clone the repository
-2. Install dependencies:
-   \`\`\`bash
-   npm install
-   \`\`\`
+2FA (TOTP) – Optional Two-Factor Authentication for enhanced account security (planned feature)
 
-3. Create a `.env.local` file in the root directory:
-   \`\`\`env
-   MONGODB_URI=your_mongodb_connection_string
-   JWT_SECRET=your_random_secret_key_here
-   \`\`\`
+Auto-Clear Clipboard – Passwords copied to clipboard automatically clear after 15 seconds
 
-4. Run the development server:
-   \`\`\`bash
-   npm run dev
-   \`\`\`
+Export/Import (Encrypted) – Securely back up or restore vault data via encrypted local files (planned feature)
 
-5. Open [http://localhost:3000](http://localhost:3000)
+🧩 Tech Stack
+Layer	Technology
+Frontend	Next.js 14 (App Router), React, Tailwind CSS
+Backend	Next.js API Routes
+Database	MongoDB (Atlas)
+Authentication	JWT with httpOnly cookies
+Encryption	Web Crypto API (AES-GCM + PBKDF2)
+Password Hashing	bcrypt
+⚙️ Getting Started
+Prerequisites
 
-### MongoDB Setup
+Node.js v18+
 
-1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a new cluster
-3. Get your connection string and add it to `.env.local`
-4. The app will automatically create the necessary collections
+A MongoDB Atlas account (Free Tier works perfectly)
 
-## Security Features
+Installation
+# Clone the repository
+git clone https://github.com/yourusername/password-manager.git
+cd password-manager
 
-- **Client-Side Encryption**: Vault data is encrypted in the browser before transmission
-- **Key Derivation**: Uses PBKDF2 with 100,000 iterations to derive encryption keys
-- **Password Hashing**: bcrypt with 10 rounds for user passwords
-- **JWT Authentication**: Secure httpOnly cookies prevent XSS attacks
-- **No Plaintext Storage**: Server never sees unencrypted vault data
+# Install dependencies
+npm install
 
-## Environment Variables
+Setup Environment Variables
 
-- `MONGODB_URI`: MongoDB connection string
-- `JWT_SECRET`: Secret key for JWT token signing (use a long random string)
+Create a .env.local file in the root directory:
 
-## Deployment
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_random_secret_key_here
+NEXTAUTH_SECRET=your_next_auth_secret_here
 
-This app is ready to deploy to Vercel:
+Run Development Server
+npm run dev
 
-1. Push your code to GitHub
-2. Import the project in Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy!
 
-## Project Structure
+Visit → http://localhost:3000
 
-\`\`\`
+🧠 MongoDB Setup
+
+Create a free cluster at MongoDB Atlas
+
+Copy the connection string
+
+Paste it into your .env.local file
+
+The app auto-creates collections on first run
+
+🔒 Security Architecture
+Layer	Security Measure
+Client-Side Encryption	AES-GCM with PBKDF2 key derivation (100,000 iterations)
+Password Hashing	bcrypt (10 rounds)
+Authentication	JWT in httpOnly cookies
+Clipboard Handling	Clears sensitive data automatically
+Zero-Knowledge Design	Server never sees unencrypted vault data
+🗂️ Environment Variables
+Variable	Description
+MONGODB_URI	MongoDB connection string
+JWT_SECRET	Secret key for signing JWT tokens
+NEXTAUTH_SECRET	Optional – used if integrating with NextAuth
+ENCRYPTION_SALT	Optional – additional salt for key derivation
+☁️ Deployment (Vercel)
+
+Push your repo to GitHub
+
+Import it into Vercel
+
+Add your .env variables in the Vercel dashboard
+
+Click Deploy
+
+📁 Project Structure
 ├── app/
-│   ├── api/          # API routes for auth and vault
-│   ├── login/        # Login page
-│   ├── signup/       # Signup page
-│   ├── vault/        # Vault page (protected)
-│   └── page.js       # Home page
-├── components/       # React components
-├── lib/             # Utilities (MongoDB, encryption, auth)
+│   ├── api/              # API routes (auth, vault, etc.)
+│   ├── login/            # Login page
+│   ├── signup/           # Signup page
+│   ├── vault/            # Protected vault dashboard
+│   └── page.js           # Home page
+├── components/           # Reusable React components
+├── lib/                  # Utilities (DB, crypto, JWT helpers)
 └── README.md
-\`\`\`
 
-## License
+🧭 Roadmap
 
-MIT
+ Implement 2FA (TOTP)
+
+ Add tags & folder organization
+
+ Enable encrypted export/import
+
+ Integrate browser autofill (beta)
+
+ Add password strength analyzer
+
+🪪 License
+
+MIT License – Free to use and modify.
+Built with ❤️ for privacy-focused developers.
