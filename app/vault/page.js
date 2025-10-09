@@ -1,4 +1,4 @@
-// Vault Page - Main password vault interface with encryption
+
 "use client"
 
 import { useState, useEffect } from "react"
@@ -38,7 +38,6 @@ export default function VaultPage() {
         if (typeof window !== "undefined") {
           const storedKey = sessionStorage.getItem("encryptionKey")
           if (storedKey) {
-            // Convert stored key back to CryptoKey
             const keyData = JSON.parse(storedKey)
             const cryptoKey = await crypto.subtle.importKey("raw", new Uint8Array(keyData), { name: "AES-GCM" }, true, [
               "encrypt",

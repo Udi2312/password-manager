@@ -1,4 +1,4 @@
-// Signup page - New user registration form
+
 "use client"
 
 import { useState } from "react"
@@ -199,7 +199,7 @@ export default function SignupPage() {
   )
 }
 
-// Helper component for password strength checks
+
 function PasswordCheck({ met, text }) {
   return (
     <div className="flex items-center gap-2">

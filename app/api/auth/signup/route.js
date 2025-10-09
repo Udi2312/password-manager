@@ -1,4 +1,4 @@
-// Signup API route - Creates new user with hashed password
+
 import { NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
 import clientPromise from "@/lib/mongodb"

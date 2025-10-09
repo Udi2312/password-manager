@@ -117,7 +117,7 @@ export async function DELETE(request) {
     const db = client.db("passwordmanager")
     const vaultItems = db.collection("vaultitems")
 
-    // Delete only if item belongs to user
+    
     const result = await vaultItems.deleteOne({ _id: new ObjectId(itemId), userId: user.userId })
 
     if (result.deletedCount === 0) {
