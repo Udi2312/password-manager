@@ -1,4 +1,4 @@
-// Standalone Password Generator Page
+
 "use client"
 
 import { useRouter } from "next/navigation"
@@ -11,7 +11,6 @@ export default function GeneratorPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -26,7 +25,7 @@ export default function GeneratorPage() {
         </div>
       </header>
 
-      {/* Main Content */}
+     
       <main className="container mx-auto px-4 py-8 max-w-2xl">
         <div className="space-y-6">
           <div className="space-y-2">
@@ -41,7 +40,7 @@ export default function GeneratorPage() {
             <PasswordGenerator />
           </div>
 
-          {/* Security Tips */}
+        
           <div className="border border-border rounded-lg p-6 space-y-4">
             <h3 className="font-semibold">Password Security Tips</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
