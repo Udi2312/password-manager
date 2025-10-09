@@ -1,9 +1,8 @@
-// Verification token API - Stores and retrieves password verification token
 import { NextResponse } from "next/server"
 import clientPromise from "@/lib/mongodb"
 import { getUserFromRequest } from "@/lib/auth"
 
-// GET - Fetch verification token for authenticated user
+
 export async function GET(request) {
   try {
     const user = await getUserFromRequest(request)
@@ -16,7 +15,7 @@ export async function GET(request) {
     const db = client.db("passwordmanager")
     const users = db.collection("users")
 
-    // Fetch user's verification token
+    
     const userData = await users.findOne({ email: user.email }, { projection: { verificationToken: 1 } })
 
     return NextResponse.json({ verificationToken: userData?.verificationToken || null }, { status: 200 })
@@ -26,7 +25,7 @@ export async function GET(request) {
   }
 }
 
-// POST - Store verification token for authenticated user
+
 export async function POST(request) {
   try {
     const user = await getUserFromRequest(request)
@@ -45,7 +44,7 @@ export async function POST(request) {
     const db = client.db("passwordmanager")
     const users = db.collection("users")
 
-    // Store verification token
+    
     await users.updateOne({ email: user.email }, { $set: { verificationToken, updatedAt: new Date() } })
 
     return NextResponse.json({ message: "Verification token stored" }, { status: 200 })

@@ -1,10 +1,10 @@
-// Vault API routes - CRUD operations for encrypted vault items
+
 import { NextResponse } from "next/server"
 import { ObjectId } from "mongodb"
 import clientPromise from "@/lib/mongodb"
 import { getUserFromRequest } from "@/lib/auth"
 
-// GET - Fetch all vault items for authenticated user
+
 export async function GET(request) {
   try {
     const user = await getUserFromRequest(request)
@@ -17,7 +17,7 @@ export async function GET(request) {
     const db = client.db("passwordmanager")
     const vaultItems = db.collection("vaultitems")
 
-    // Fetch all items for this user (data is encrypted)
+    
     const items = await vaultItems.find({ userId: user.userId }).sort({ createdAt: -1 }).toArray()
 
     return NextResponse.json({ items }, { status: 200 })
@@ -27,7 +27,7 @@ export async function GET(request) {
   }
 }
 
-// POST - Create new vault item
+
 export async function POST(request) {
   try {
     const user = await getUserFromRequest(request)
@@ -46,7 +46,7 @@ export async function POST(request) {
     const db = client.db("passwordmanager")
     const vaultItems = db.collection("vaultitems")
 
-    // Store encrypted data with user ID and timestamps
+    
     const result = await vaultItems.insertOne({
       userId: user.userId,
       encryptedData,
@@ -61,7 +61,7 @@ export async function POST(request) {
   }
 }
 
-// PUT - Update existing vault item
+
 export async function PUT(request) {
   try {
     const user = await getUserFromRequest(request)
@@ -80,7 +80,7 @@ export async function PUT(request) {
     const db = client.db("passwordmanager")
     const vaultItems = db.collection("vaultitems")
 
-    // Update only if item belongs to user
+    
     const result = await vaultItems.updateOne(
       { _id: new ObjectId(itemId), userId: user.userId },
       { $set: { encryptedData, updatedAt: new Date() } },
@@ -97,7 +97,7 @@ export async function PUT(request) {
   }
 }
 
-// DELETE - Delete vault item
+
 export async function DELETE(request) {
   try {
     const user = await getUserFromRequest(request)

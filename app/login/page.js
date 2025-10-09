@@ -1,4 +1,4 @@
-// Login page - User authentication form
+
 "use client"
 
 import { useState } from "react"
@@ -16,7 +16,7 @@ export default function LoginPage() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
-  // Handle login form submission
+ 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
@@ -37,10 +37,10 @@ export default function LoginPage() {
         return
       }
 
-      // Store email in sessionStorage for encryption key derivation
+      
       sessionStorage.setItem("userEmail", email)
 
-      // Redirect to vault
+      
       router.push("/vault")
     } catch (err) {
       setError("An error occurred. Please try again.")

@@ -1,4 +1,3 @@
-// Password Generator Component - Generates secure passwords with customizable options
 "use client"
 
 import { useState, useEffect } from "react"
@@ -19,27 +18,21 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
   const [copied, setCopied] = useState(false)
   const [copyTimeout, setCopyTimeout] = useState(null)
 
-  // Character sets for password generation
   const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   const lowercase = "abcdefghijklmnopqrstuvwxyz"
   const numbers = "0123456789"
   const symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?"
-
-  // Similar-looking characters to exclude
   const similarChars = "il1Lo0O"
 
-  // Generate password based on selected options
   const generatePassword = () => {
     let charset = ""
     let generatedPassword = ""
 
-    // Build character set based on options
     if (includeUppercase) charset += uppercase
     if (includeLowercase) charset += lowercase
     if (includeNumbers) charset += numbers
     if (includeSymbols) charset += symbols
 
-    // Remove similar characters if option is enabled
     if (excludeSimilar) {
       charset = charset
         .split("")
@@ -47,12 +40,10 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
         .join("")
     }
 
-    // Ensure at least one character set is selected
     if (charset.length === 0) {
-      charset = lowercase // Fallback to lowercase
+      charset = lowercase
     }
 
-    // Generate random password using crypto.getRandomValues for security
     const array = new Uint32Array(length)
     crypto.getRandomValues(array)
 
@@ -62,29 +53,24 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
 
     setPassword(generatedPassword)
 
-    // Call callback if provided (for vault form)
     if (onPasswordGenerated) {
       onPasswordGenerated(generatedPassword)
     }
   }
 
-  // Generate password on component mount and when options change
   useEffect(() => {
     generatePassword()
   }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols, excludeSimilar])
 
-  // Copy password to clipboard with auto-clear after 15 seconds
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(password)
       setCopied(true)
 
-      // Clear any existing timeout
       if (copyTimeout) {
         clearTimeout(copyTimeout)
       }
 
-      // Auto-clear clipboard after 15 seconds
       const timeout = setTimeout(async () => {
         await navigator.clipboard.writeText("")
         setCopied(false)
@@ -93,14 +79,12 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
 
       setCopyTimeout(timeout)
 
-      // Reset copied state after 2 seconds
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
       console.error("Failed to copy:", err)
     }
   }
 
-  // Calculate password strength
   const calculateStrength = () => {
     let strength = 0
     if (includeUppercase) strength++
@@ -116,7 +100,6 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
 
   return (
     <div className="space-y-6">
-      {/* Generated Password Display */}
       <div className="space-y-3">
         <Label>Generated Password</Label>
         <div className="flex gap-2">
@@ -131,7 +114,6 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
           </Button>
         </div>
 
-        {/* Password Strength Indicator */}
         <div className="flex gap-1">
           {[1, 2, 3, 4, 5].map((level) => (
             <div
@@ -153,7 +135,6 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
         </p>
       </div>
 
-      {/* Length Slider */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Label>Length</Label>
@@ -162,7 +143,6 @@ export default function PasswordGenerator({ onPasswordGenerated }) {
         <Slider value={[length]} onValueChange={(value) => setLength(value[0])} min={8} max={64} step={1} />
       </div>
 
-      {/* Character Options */}
       <div className="space-y-3">
         <Label>Character Types</Label>
         <div className="space-y-3">
