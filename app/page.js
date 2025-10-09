@@ -1,4 +1,4 @@
-// Home page - Landing page with navigation to login/signup
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Shield, Lock, Key, Eye } from "lucide-react"
@@ -6,7 +6,7 @@ import { Shield, Lock, Key, Eye } from "lucide-react"
 export default function Home() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
+    
       <header className="border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -24,7 +24,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
+    
       <main className="flex-1 flex items-center justify-center px-4">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4">
@@ -48,7 +48,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Features Grid */}
+         
           <div className="grid md:grid-cols-3 gap-6 mt-16 text-left">
             <div className="border border-border rounded-lg p-6 space-y-3">
               <Lock className="h-8 w-8 text-primary" />
@@ -77,7 +77,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
+    
       <footer className="border-t border-border py-6">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>Built with Next.js, MongoDB, and Web Crypto API</p>
