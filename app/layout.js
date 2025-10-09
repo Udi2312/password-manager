@@ -3,7 +3,7 @@ import "./globals.css"
 export const metadata = {
   title: "SecureVault - Password Manager",
   description: "Secure password manager with client-side encryption",
-    generator: 'v0.app'
+    generator: 'Udit Bansal'
 }
 
 export default function RootLayout({ children }) {
